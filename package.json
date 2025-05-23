@@ -11,6 +11,7 @@
     "node": "18.x"
   },
   "scripts": {
-   "build": "cd frontend && npm install && npm run build"
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm install && npm run build"
   }
 }
