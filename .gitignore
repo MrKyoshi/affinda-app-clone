@@ -1,0 +1,4 @@
+.vercel
+# at project root or in frontend/
+.DS_Store
+node_modules/

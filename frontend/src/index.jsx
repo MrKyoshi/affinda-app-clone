@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App.jsx';
-import reportWebVitals from './reportWebVitals';
+import App from './App';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+function Root() {
+  useEffect(() => {
+    const stop = e => {
+      e.preventDefault();
+      e.stopPropagation();
+    };
+    window.addEventListener('dragover', stop);
+    window.addEventListener('drop', stop);
+    return () => {
+      window.removeEventListener('dragover', stop);
+      window.removeEventListener('drop', stop);
+    };
+  }, []);
+  return <App />;
+}
+
+const container = document.getElementById('root');
+ReactDOM.createRoot(container).render(
   <React.StrictMode>
-    <App />
+    <Root />
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
